@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Display countdown to a specific date</title>
+
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#contador {
+    font-size: 2em;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  </style>
+
+  
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contagem Regressiva</title>
+</head>
+<body>
+    <div id="contador"></div>
+</body>
+
+  <script>
+    function atualizarContador() {
+    const agora = new Date().getTime();
+    const dataAlvo = new Date('April 6, 2025 00:00:00').getTime();
+    const diferenca = dataAlvo - agora;
+
+    if (diferenca <= 0) {
+        document.getElementById('contador').innerHTML = 'A data chegou!';
+        clearInterval(intervalo);
+        return;
+    }
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    document.getElementById('contador').innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+const intervalo = setInterval(atualizarContador, 1000);
+atualizarContador();
+  </script>
+</body>
+</html>
